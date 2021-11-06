@@ -73,5 +73,17 @@
 // console.log(`Привет ${name}`);
 
 
-                    //Преобразование типов
+                    //number
+let million = 1e6,
+    ms = 1e-2;
+console.log(million);
+console.log(ms);
+alert(0xff); // = 255
 
+let num = 152 ;
+console.log(num.toString(16)); // в 16 системе = 98
+
+let sum = 0.1 + 0.2;
+alert(+sum.toFixed(2));
+
+alert(999999999999999999);
