@@ -43,3 +43,21 @@ if (check.toUpperCase()=='ПОСТФИКС') {
 };
 console.log(result);
 
+let qst = prompt("Какое официальное название JavaScript?", ' ');
+qst == 'ECMAScript' ? alert('Правильно!') : alert('Не знаете ECMAScript?');
+
+qst = prompt("Введите число", ' ');
+if (qst > 0)
+    alert(1);
+else if(qst < 0)
+    alert(-1);
+else alert(0);
+
+let result = (a + b < 4) ? 'Мало' : 'Много';
+console.log(result);    // Не выводит
+
+let message = (login == 'Сотрудник') ? 'Привет' :
+              (login == 'Директор') ? 'Здравствуйте' :
+              (login == '') ? 'Нет логина' :
+              '';
+console.log(message);   // Не выводит
