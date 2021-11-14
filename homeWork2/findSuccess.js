@@ -7,7 +7,7 @@
 
   const findSuccess = (bankResponse) => {
 
-    if(bankResponse.split(" ").map(item => item.toLowerCase()).find(item => item === "success") !== undefined)
+    if(bankResponse.split(' ').map(item => item.toLowerCase()).find(item => item === "success") !== undefined)
         return "Yes";
       else
         if(bankResponse.split(/(?=[A-Z])/).map(item => item.toLowerCase()).find(item => item === "success"))

@@ -5,13 +5,13 @@ export const dateToString = (date) => {
     return a[0];
   };
 
-  const transformationData = (num) => {
+  const editData = (num) => {
     return new Date(Date.now() + num).toISOString().split("T")[0];
   };
 
-  let yesterday = transformationData(-86400000);
-  let today = transformationData(0);
-  let tomorrow = transformationData(86400000);
+  let yesterday = editData(-86400000);
+  let today = editData(0);
+  let tomorrow = editData(86400000);
   let checkedDate = formatDate(date);
 
   switch (checkedDate) {

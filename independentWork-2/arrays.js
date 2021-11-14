@@ -19,3 +19,10 @@ let num =[
 console.log(num[2][2]);
 delete num[0][0];
 console.log(num[0][0]);
+
+fruits.forEach((item, index, array) => {
+    console.log(`${item} имеет позицую ${index} в ${array}`);
+    console.log( item + '1');
+});
+console.log(fruits.includes('banana'));
+console.log(fruits.includes('Привет'));
