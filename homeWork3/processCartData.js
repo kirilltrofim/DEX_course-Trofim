@@ -9,10 +9,11 @@ export const processCartData = (cartData) => {
 
   let addItem = (cartData) => {
     for (let key in cartData) {
-      cartData[key].discount = 0;
+      cartData[key].discount = null;
     }
   };
   deleteItem(cartData);
   addItem(cartData);
+  console.log(cartData);
   return cartData;
 };
