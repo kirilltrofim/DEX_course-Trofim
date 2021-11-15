@@ -13,10 +13,8 @@ export const makeCartItemCopy = (cartItem) => {
     return cartItemClone;
   }
 
-  let arr = deepClone(cartItem[0]);
-  console.log(arr);
-  cartItem[0].addedIngredients[0].count = ++arr.addedIngredients[0].count;
-  console.log(cartItem);
+  let cartItemClone = deepClone(cartItem[0]);
+  cartItemClone.addedIngredients[0].count++;
 
   return cartItem;
 };
