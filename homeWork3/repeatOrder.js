@@ -1,14 +1,20 @@
-// export const repeatOrder = (cartData, date) => {
-//     //TODO: нужно повторить заказ за выбранную дату
-//     // дублиовать соответствующие элементы
-//     // поставить в начало спиcка
-//     // дату текущую
-//     // поменять id на уникальный
-//     const now = new Date().toISOString();
-//     const filterCartData = cartData.filter(item => item.date === date).map((item,i) => item = {...item, id:String(cartData.length + i), date:now});
-
-//     cartData = [...filterCartData, ...cartData];
-//     console.log(cartData);
-//     return cartData;
-//   };
-//Работает только для первоначального cartData
+export const repeatOrder = (cartData, date) => {
+    //TODO: нужно повторить заказ за выбранную дату
+    // дублиовать соответствующие элементы
+    // поставить в начало спиcка
+    // дату текущую
+    // поменять id на уникальный
+    function getRandomInt(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min)) + min;
+      }
+    let randomId = getRandomInt(1,1001);
+    cartData.filter(e=>e.date === date).forEach(item => {
+      let copy = {...item};
+      copy.date = new Date().toISOString();
+      copy.id = randomId++;
+      cartData.unshift(copy);
+    });
+    return cartData;
+  };
