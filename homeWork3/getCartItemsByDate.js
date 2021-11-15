@@ -44,3 +44,34 @@ export const getCartItemsByDate = (cartData, dates) => {
 
   return cartData;
 };
+
+export const getCartItemsByDate = (cartData, dates) => {
+  //TODO: выбрать покупки сделанные за выбранную дату
+  // Доделать , не работает
+  function deepClone(cartItem) {
+    const cartItemClone = {};
+    for (const i in cartItem) {
+      if (cartItem[i] instanceof Object) {
+        cartItemClone[i] = deepClone(cartItem[i]);
+        continue;
+      }
+      cartItemClone[i] = cartItem[i];
+    }
+    return cartItemClone;
+  }
+
+  let cartDataClone = deepClone(cartData);
+
+  dates = new Date(dates);
+  console.log(dates);
+  cartData = cartDataClone;
+  for (let key in cartData) {
+    let date = new Date(cartData[key].date);
+    if (dates.toLocaleDateString() !== date.toLocaleDateString()){
+    console.log(cartData);
+    delete cartData[key];
+  }
+
+  }
+  return cartData;
+};
