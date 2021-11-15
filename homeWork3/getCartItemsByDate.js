@@ -4,6 +4,6 @@ export const getCartItemsByDate = (cartData, date) => {
   const filterCartData = cartData.map(
     (item) => (item = { ...item, date: item.date.slice(0, 10) })
   );
-  console.log(cartData);
+  if(isNaN(date) == 0) return cartData;
   return (filterCartData.filter((item) => item.date === date));
 };
