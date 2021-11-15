@@ -12,3 +12,15 @@ export const getDoubleUserBonuses = (data) => {
     }
 
   };
+
+  export const getDoubleUserBonuses = (data) => {
+    let arr = data.map(item => {
+      let sum = 0;
+      for (let value of Object.values(item.userBonuses)){
+        sum+=value;
+      }
+      return sum*2;
+    });
+    return `Пользователи ${data.map(element=> element.name)} получат соответственно ${arr}`
+
+  };
