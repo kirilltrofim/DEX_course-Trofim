@@ -30,3 +30,17 @@ export const getCartItemsByDate = (cartData, dates) => {
 
   return cartData;
 };
+
+export const getCartItemsByDate = (cartData, dates) => {
+  //TODO: выбрать покупки сделанные за выбранную дату
+  // Доделать , не работает
+  dates = new Date(dates);
+  console.log(dates);
+  for (let key in cartData) {
+    let date = new Date(cartData[key].date);
+    if (dates.toDateString() !== date.toDateString())
+    delete cartData[key];
+  }
+
+  return cartData;
+};
