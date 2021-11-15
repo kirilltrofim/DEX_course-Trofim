@@ -9,13 +9,13 @@ export const calcSum = (cartData) => {
     sumOther = 0,
     sumCountOther = 0;
   for (let key in cartData) {
-    sumCountTotal += cartData[key].count;
-    if (cartData[key].count > 1)
+    sumCountTotal += cartData[key]?.count;
+    if (cartData[key]?.count > 1)
       sumTotal += cartData[key].price * cartData[key].count;
-    else sumTotal += cartData[key].price;
+    else sumTotal += cartData[key]?.price;
   }
   for (let key in cartData) {
-    switch (cartData[key].type) {
+    switch (cartData[key]?.type) {
       case "water":
         sumCountWater += cartData[key].count;
         if (cartData[key].count > 1)
@@ -43,19 +43,19 @@ export const calcSum = (cartData) => {
   return {
     total: {
       count: sumCountTotal,
-      sum: sumTotal
+      sum: sumTotal,
     },
     water: {
       count: sumCountWater,
-      sum: sumWater
+      sum: sumWater,
     },
     pizza: {
       count: sumCountPizza,
-      sum: sumPizza
+      sum: sumPizza,
     },
     other: {
       count: sumCountOther,
-      sum: sumOther
+      sum: sumOther,
     },
   };
 };
