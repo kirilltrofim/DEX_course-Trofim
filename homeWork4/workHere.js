@@ -4,7 +4,8 @@ export const counter = () => {
   let num = 0;
   return function () {
     num++;
-    return console.log(num);
+    console.log(num)
+    return counter();
   };
 };
 
