@@ -14,9 +14,7 @@ export const counter = (name, func) => {
 export const logger = (name, fn) => {
   return function (...args) {
     this.fn = fn;
-    console.log(
-      ` параметры: ${args} \n результат:${this.fn(args)} \n название:${name}`
-    );
+    console.log(` Name:${name}\n Parametrs: ${args}\n Result:${this.fn(args)}`);
     return this.fn;
   };
 };
@@ -24,6 +22,7 @@ export const logger = (name, fn) => {
 //TODO: Напишите функцию каррирования, должна принимать функцию, а возвращать функцию
 // Каррирование – это трансформация функций таким образом, чтобы они принимали аргументы не как f(a, b, c), а как f(a)(b)(c)
 // Должна работать для любого кол-ва аргументов
+<<<<<<< HEAD
 export const curry = (func) => {
   return function curried(...rest) {
     let this1 = this;
@@ -31,6 +30,16 @@ export const curry = (func) => {
     else
       return function (...rest2) {
         return curried.apply(this1, rest.concat(rest2));
+=======
+export const curry = (f) => {
+  return function func(...args) {
+    if (args.length >= f.length) {
+      return f.apply(this, args);
+    } else {
+      return function (...args2) {
+        return func.apply(this, args.concat(args2));
+>>>>>>> master
       };
+    }
   };
 };
