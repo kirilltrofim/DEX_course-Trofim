@@ -6,7 +6,7 @@ import { compareText } from "./data";
 const getData = (str) => {
   return compareText(str)
     .then((res) => res)
-    .catch((err) => err.message);
+    .catch((mistake) => mistake.message);
 };
 // TODO: вторая использует try и catch
 // TODO: Если ответ положительный вывести в консоль: "Success: ..."
@@ -15,8 +15,8 @@ const processingData = async (str) => {
   try {
     const result = await getData(str);
     console.log(`Success ${result}`);
-  } catch (err) {
-    console.log(`Error: ${err}`);
+  } catch (mistake) {
+    console.log(`Error: ${mistake}`);
   }
 };
 processingData("короткий текст");
@@ -32,8 +32,8 @@ processingData("длинный тексттттттттттт");
 const getResponse = async (str) => {
   compareText(str)
     .then((result) => result + " :)")
-    .catch((error) => {
-      throw new Error(error.message + " :(");
+    .catch((mistake) => {
+      throw new Error(mistake.message + " :(");
     })
     .then((result) => {
       while (result.length <= 20) {
@@ -41,13 +41,36 @@ const getResponse = async (str) => {
       }
       console.log(result);
     })
-    .catch((error) => {
-      while (error.message.length <= 20) {
-        error.message = error.message + "(";
+    .catch((mistake) => {
+      while (mistake.message.length <= 20) {
+        mistake.message = mistake.message + "(";
       }
-      console.error(error.message);
+      console.error(mistake.message);
     });
 };
 
 getResponse("короткий текст");
 getResponse("Длинный текстттт");
+
+// Написать функцию, которая принимает url и выводит в консоль ответ
+// TODO: обработать ошибки и вывести в консоль "Ошибка"
+// TODO: ошибка если тстатус меньше 200 и больше 299
+const getDataFromAPI = async (url) => {
+  try {
+    const response = await fetch(url);
+    if (response.ok) {
+      const data = await response.json();
+      console.log("Данные получены:");
+      console.log(data);
+      return data;
+    } else {
+      throw new Error("Ошибка. Cтатус HTTP меньше 200 или больше 299");
+    }
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+getDataFromAPI("https://randomuser.me/api");
+getDataFromAPI("https://randomuser123.me/api");
+getDataFromAPI("https://randomuser.me/api123");
